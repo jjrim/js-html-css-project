@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main Page</title>
+    <title>Sync your table</title>
 
     <!-- Making sure it's mobile friendly -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,6 +64,10 @@ display: inline-block;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 margin: 0 auto;
 }
+
+.restaurantsync{
+}
+
 .signin{
     position: relative;
 text-align:center;
@@ -87,7 +91,7 @@ color: #FFFFFF;
 <div style="background:rgb(112, 10, 10)">
             <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#">Homepage</a>
+                      <a class="nav-link active" href="file:///C:/Users/james/group13/jamespages/signedin.html">Homepage</a>
                     </li>
                     <li class="nav-item dropdown pill-color">
                       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find your restaurant</a>
@@ -96,11 +100,11 @@ color: #FFFFFF;
                         <a class="dropdown-item" href="#">By name</a>
                         <a class="dropdown-item" href="#">See all restaurants</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="reserve\reservation.html">Reserve a table</a>
+                        <a class="dropdown-item" href="#">Reserve a seat</a>
                       </div>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link pill-color" href="sync/syncyourtable.html">Sync your table</a>
+                      <a class="nav-link pill-color" href="#">Sync your table</a>
                     </li>
                     <li class="nav-item">
                             <a class="nav-link active" href="login.html">Sign in</a>
@@ -113,21 +117,13 @@ color: #FFFFFF;
 <body>
 
 <div class="outer">
-        <h1>Welcome</h1>
-    <h2>to the</h2>
-    <h1>J Bros Restaurant App</h1>
+        <h1>Sync here</h1>
 </div>
-<div class="outer"><div class="sphere"><p>Stop waiting for waiters</p></div></div>
-<div class="outer"><a href="login.html"><div class=signinbutton><p class="signin">sign in</p></div></a></div>
-</div>
-
-<div class="outer">
-    <a href="restaurants.html">
-        <div class=signinbutton>
-            <p class="signin">Find a restaurant</p>
-        </div>
-    </a>
-</div>
+<div class="outer"><div atyle = "margin:auto;">
+<input type="text" id="restaurantsynce" placeholder="Enter table number">
+<a href="table_details"><input type = "submit" id= "restaurantsync"></a>
+</div></div>
+<a href = "file:///C:/Users/james/group13/jamespages/signedin.html"><div>back to main page</div></a>
 
 
  <!-- Optional JavaScript -->
