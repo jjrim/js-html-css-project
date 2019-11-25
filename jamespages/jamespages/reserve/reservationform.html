@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main Page</title>
+    <title>Reservation Form</title>
 
     <!-- Making sure it's mobile friendly -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +23,7 @@
     }
     
 body{
-    background-color: rgb(216, 180, 62);
+    background-color: white;
 }
 
 .title{
@@ -112,12 +112,47 @@ color: #FFFFFF;
 </head>
     <body>
 
-<h1>Thank you for ordering!</h1>
+<h1>Reservation Form</h1>
 
-<div class="outer"><a href="file:///C:/Users/james/group13/jamespages/signedin.html"><div class=signinbutton><p class="signin">Click here to go back to the main page</p></div></a></div>
+<form>
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name">
+          </div>
+        </div>
+      </form>
 
+      <form name="submitter" action="thankyou.html" method="post">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Email address</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="555-555-5555">
 
-
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Time</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1:00</option>
+                <option>2:00</option>
+                <option>3:00</option>
+                <option>4:00</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect2">Number of People</label>
+              <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="7">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Any special requests or conditions</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+             <input name="submitter" type="submit">
+          </form>
+<a a href= "thankyou.html"><p>click</p></a>
 
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
