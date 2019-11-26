@@ -11,79 +11,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-<style>
-    h1{
-        text-align:center;
-        color: rgb(112, 10, 10)
-    }
-    h2{
-        text-align: center;
-        color:  rgb(112, 10, 10);
-    }
-    
-body{
-    background-color: white;
-}
-
-.title{
-    margin-left:auto;
-}
-.outer{
-    text-align:center;
-    margin: 50
-}
-.sphere{
-    height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 250%;
-  position: relative;
-  box-shadow: inset -10px -10px 80px #000, 10px 10px 20px black, inset 0px 0px 10px black;
-  display: inline-block;
-  margin: 0 auto;  
-  padding: 0px;
-  background: #FFA928;
-  color: rgb(112, 10, 10);
-}
-
-.signinbutton{
-    border-radius:25px;
-    position: relative;
-width: 217px;
-height: 82px;
-top: 80px;
-margin-bottom: 500px;
-
-background: #C52828;
-border: 1px solid #FF0000;
-box-sizing: border-box;
-display: inline-block;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-margin: 0 auto;
-}
-.signin{
-    position: relative;
-text-align:center;
-    font-family: Montserrat;
-font-style: normal;
-font-weight: bold;
-font-size: 24px;
-
-/* identical to box height, or 150% */
-
-letter-spacing: -0.015em;
-vertical-align: middle;
-
-color: #FFFFFF;
-}
-
-.pill-color{
-        background-color: white;
-}
-</style>
 <div style="background:rgb(112, 10, 10)">
             <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -114,45 +43,94 @@ color: #FFFFFF;
 
 <h1>Reservation Form</h1>
 
-<form>
+form action="thankyou.html">
         <div class="form-row">
           <div class="col">
-            <input type="text" class="form-control" placeholder="First name">
+            <input type="text" class="form-control" id = "firstName" placeholder="First name">
           </div>
           <div class="col">
-            <input type="text" class="form-control" placeholder="Last name">
+            <input type="text" class="form-control" id = "lastName" placeholder="Last name">
           </div>
         </div>
       </form>
 
-      <form action="thankyou.html">
+      <div class="col">
+          <label for="exampleFormControlInput1">Date for Reservation</label>
+          <input type="text" class="form-control" id = "date" placeholder="Month-day-year">
+        </div>
+      </div>
+    
+
+      
             <div class="form-group">
               <label for="exampleFormControlInput1">Email address</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-              <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="555-555-5555">
+              <input type="email" class="form-control" id="email" placeholder="name@example.com">
+              <input type="phone" class="form-control" id="phone" placeholder="555-555-5555">
 
             </div>
+  
+                <div class="col-xs-2">
+                  <label for="ex1">col-xs-2</label>
+                  <input class="form-control" id="ex1" type="text">
+                </div>
+                <div class="col-xs-3">
+                  <label for="ex2">col-xs-3</label>
+                  <input class="form-control" id="ex2" type="text">
+                </div>
+                <div class="col-xs-4">
+                  <label for="ex3">col-xs-4</label>
+                  <input class="form-control" id="ex3" type="text">
+                </div>
+              
+
             <div class="form-group">
               <label for="exampleFormControlSelect1">Time</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <select class="form-control" id="time">
                 <option>1:00</option>
                 <option>2:00</option>
                 <option>3:00</option>
                 <option>4:00</option>
-                <option>5</option>
+                <option>5:00</option>
               </select>
             </div>
             <div class="form-group">
+                <div class="col-xs-4">
               <label for="exampleFormControlSelect2">Number of People</label>
-              <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="7">
+              <input type="phone" class="form-control" id="numberofpeople" placeholder="7">
+            </div>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Any special requests or conditions</label>
+              <label for="exampleFormControlTextarea1" id="request">Any special requests or conditions</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <input type="submit" href="thankyou.html">
           </form>
 
+          <script>
+
+                document.getElementById('ReservationForm').addEventListener('submit', processReservation)
+                  function processReservation(e) {
+                    e.preventDefault();
+                    let reservationFirstName = document.getElementById('firstName').value
+                    let reservationLasttName = document.getElementById('LasttName').value
+                    let reservationGuests = document.getElementById('numberofpeople').value
+                    let reservationDate = document.getElementById('date').value
+                    let reservationTime = document.getElementById('time').value
+                    let reservationEmail = document.getElementById('email').value
+                    let phone = document.getElementById('phone').value
+                    let reservationRequests = document.getElementById('request').value
+                    db.collection("Restaurants").doc("CactusBurnarby").collection("Reservations").add({
+                    Guests: reservationGuests,
+                    Name: reservationFirstName,
+                    Name: reservationLastName,
+                    Time: reservationTime,
+                    Date: reservationDate,
+                    email: reservationEmail,
+                    phoneNumber:phone,
+                    specialRequests: reservationRequests
+                })
+              }
+                </script>
 
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
