@@ -70,6 +70,10 @@ box-sizing: border-box;
   background-color: #981C1C;
 }
 
+center{
+  margin: 0 auto;
+}
+
 .timebox{
   position: relative;
   width: 244px;
@@ -80,11 +84,21 @@ box-sizing: border-box;
   box-sizing: border-box;
   backdrop-filter: blur(4px);
 }
+.timebox2{
+  position: relative;
+  width: 244px;
+  height: 83px;
+  border: 1px solid rgb(0, 0, 0);
+  background: #FEAF39;
+
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+}
 
 .timeboxWriting{
   position: relative;
-width: 96px;
-height: 29px;
+/* width: 96px;
+height: 29px; */
 text-align: center;
 margin: auto;
 
