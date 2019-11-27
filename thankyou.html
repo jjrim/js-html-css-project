@@ -13,39 +13,76 @@
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <div style="background:rgb(112, 10, 10)">
-        <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="signedin.html">Homepage</a>
-                </li>
-                <li class="nav-item dropdown pill-color">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find your restaurant</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="searchbylocation.html">By location</a>
-                    <a class="dropdown-item" href="searchbyname.html">By name</a>
-                    <a class="dropdown-item" href="searchallrestaurants.html">See all restaurants</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="reservation.html">Reserve a table</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pill-color" href="syncyourtable.html">Sync your table</a>
-                </li>
-                <li class="nav-item">
-                        <a class="nav-link active" href="mainpage.html">Sign out</a>
-                      </li>
-              </ul>
+<div style="background:rgb(112, 10, 10)">
+            <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">Homepage</a>
+                    </li>
+                    <li class="nav-item dropdown pill-color">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find your restaurant</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">By location</a>
+                        <a class="dropdown-item" href="#">By name</a>
+                        <a class="dropdown-item" href="#">See all restaurants</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Reserve a seat</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link pill-color" href="#">Sync your table</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link active" href="login.html">Sign in</a>
+                          </li>
+                  </ul>
 
-            </div>
+                </div>
 
 </head>
     <body>
 
 <h1>Thank you for ordering!</h1>
 
-<div class="outer"><a href="signedin.html"><div class=signinbutton><p class="signin">Click here to go back to the main page</p></div></a></div>
+<p id='para1'></p><br><br><br><br>
+
+<div class="outer"><a href="file:///C:/Users/james/group13/jamespages/signedin.html"><div class=signinbutton><p class="signin">Click here to go back to the main page</p></div></a></div>
+
+<script>
+  var name = localStorage.getItem("name")
+  var guest = localStorage.getItem("guests")
+  var date = localStorage.getItem("date")
+  var time = localStorage.getItem("time")
+  var phone = localStorage.getItem("phone")
+  var req = localStorage.getItem("req")
+  var para1 = document.getElementById('para1')
+  var node1 = document.createTextNode("Your name is: " + name);
+  var node2 = document.createTextNode("Guests: " + guest );
+  var node3 = document.createTextNode("Date: " + date );
+  var node4 = document.createTextNode("Your reservation time : " + time );
+  var node5 = document.createTextNode("Your phone number : " + phone );
+  var node6 = document.createTextNode("Your requests:  : " + req );
+  var node7 = document.createElement("br")
+  var node8 = document.createElement("br")
+  var node9 = document.createElement("br")
+  var node10 = document.createElement("br")
+  var node11 = document.createElement("br")
 
 
+
+  para1.appendChild(node1)
+  para1.appendChild(node7)
+  para1.appendChild(node2)
+  para1.appendChild(node8)
+  para1.appendChild(node3)
+  para1.appendChild(node9)
+  para1.appendChild(node4)
+  para1.appendChild(node10)
+  para1.appendChild(node5)
+  para1.appendChild(node11)
+  para1.appendChild(node6)
+
+
+</script>
 
 
  <!-- Optional JavaScript -->
