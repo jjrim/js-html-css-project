@@ -45,7 +45,7 @@
 <div class="outer">
   <div class="mainheader">
         <h1>Table Details</h1>
-        <h1>Table 3</h1>
+        <h1 id="username"></h1>
   </div>
   <div id="center">
         <table class = "center">
@@ -54,8 +54,8 @@
         </table>
   </div></div>
   <div class="outer">
-  <a href= "notmade.html"><div class="timebox2 center">
-    <p class = "timeboxWriting">Notfy your server</p></a>
+  <a href= "notify.html"><div class="timebox2 center">
+    <p class = "timeboxWriting">Notify your server</p></a>
 
   </div></div>
 
@@ -67,7 +67,10 @@
       </a>
 
   </div>
-
+<script>
+name= localStorage.getItem('userName')
+document.getElementById("username").innerHTML = name
+</script>
 
 
  <!-- Optional JavaScript -->
