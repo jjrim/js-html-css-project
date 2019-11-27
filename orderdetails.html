@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Table details</title>
+    <title>Order details</title>
 
     <!-- Making sure it's mobile friendly -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,6 +13,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="style.css">
+
 
 <div style="background:rgb(112, 10, 10)">
     <ul class="nav nav-tabs">
@@ -33,7 +34,7 @@
               <a class="nav-link pill-color" href="syncyourtable.html">Sync your table</a>
             </li>
             <li class="nav-item">
-                    <a class="nav-link active" href="mainpage.html">Sign out</a>
+                    <a class="nav-link active" href="login.html">Sign in</a>
                   </li>
           </ul>
 
@@ -44,28 +45,30 @@
 
 <div class="outer">
   <div class="mainheader">
-        <h1>Table Details</h1>
-        <h1>Table 3</h1>
+        <h1>Order Details</h1>
+        <h1>James</h1>
   </div>
-  <div id="center">
+  <div>
         <table class = "center">
-          <th>Customer</th><th>Order</th><th>Bill</th>
-          <tr><td>James</td> <td> <a href="orderdetails.html">order details</a></td><td>$13.50</td></tr>
+          <th>Item</th><th>Requests</th><th>price</th>
+          <tr><td>Ceasar Salad</td> <td>No dressing</td><td>$13.50</td></tr>
         </table>
   </div></div>
-  <div class="outer">
-  <a href= "notmade.html"><div class="timebox2 center">
-    <p class = "timeboxWriting">Notfy your server</p></a>
-
-  </div></div>
 
   <div class="outer">
-      <a href="signedin.html">
+      <a href="notmade.html">
+          <div class=signinbutton>
+              <p class="signin">Modify Your order</p>
+          </div>
+      </a>
+  </div>
+
+  <div class="outer">
+      <a href="mainpage.html">
           <div class=signinbutton>
               <p class="signin">Back to mainpage</p>
           </div>
       </a>
-
   </div>
 
 
