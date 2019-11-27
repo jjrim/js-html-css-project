@@ -13,6 +13,35 @@
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
+
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCENQ_98AjAccmfXsB2Kzfy-D_V3QvkN-M",
+    authDomain: "project-authentication-f841b.firebaseapp.com",
+    databaseURL: "https://project-authentication-f841b.firebaseio.com",
+    projectId: "project-authentication-f841b",
+    storageBucket: "project-authentication-f841b.appspot.com",
+    messagingSenderId: "541548160482",
+    appId: "1:541548160482:web:91a33581cbdf8b6048c5bb"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+<script>
+	// Initialize the FirebaseUI Widget using Firebase.
+	var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  // initialize firebase
+  var db = firebase.firestore();
+</script>
+
 <div style="background:rgb(112, 10, 10)">
             <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -104,6 +133,7 @@
           </div>
 
           <script>
+            localStorage.getItem('userName')
 
                 document.getElementById('ReservationForm').addEventListener('submit', processReservation)
                   function processReservation(e) {
@@ -127,7 +157,10 @@
                     specialRequests: reservationRequests
                 })
               }
+         
+
                 </script>
+                
 
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
