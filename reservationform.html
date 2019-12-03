@@ -6,6 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Reservation Form</title>
 
+
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+  <script src="scripts/firebase_setup.js"></script>
+
   <!-- Making sure it's mobile friendly -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -14,6 +19,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="style.css">
+
 
   <div style="background:rgb(112, 10, 10)">
     <ul class="nav nav-tabs">
@@ -43,66 +49,41 @@
 
 </head>
 
-<body style="background-color:white">
+<body>
 
-  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyCENQ_98AjAccmfXsB2Kzfy-D_V3QvkN-M",
-      authDomain: "project-authentication-f841b.firebaseapp.com",
-      databaseURL: "https://project-authentication-f841b.firebaseio.com",
-      projectId: "project-authentication-f841b",
-      storageBucket: "project-authentication-f841b.appspot.com",
-      messagingSenderId: "541548160482",
-      appId: "1:541548160482:web:91a33581cbdf8b6048c5bb"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+
   </script>
-
-  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-
-  <script>
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    // initialize firebase
-    var db = firebase.firestore();
-  </script>
-
-  <h1>Reservation Form</h1>
-  <form id="ReservationForm">
+<h1 >Reservation Form for</h1>
+  <h1 id="formTitle"></h1>
+<!-- <div class = "outer"> -->
+<div class = "formdiv">
+  <form action="thankyou.html" id="ReservationForm">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name"><br>
+    <input type="text" id="name"  class = "form-control" name="name"><br>
 
     <label for="guests">Number of guests:</label>
-    <input type="text" id="guests" name="guests"><br>
-
+    <input type="text" id="guests" class = "form-control" name="guests"><br>
+ 
     <label for="phone">Phone:</label>
-    <input type="text" id="phone" name="phone"><br>
-
-    <label for="req">Requests:</label>
-    <input type="text" id="req" name="req"><br>
+    <input type="text" class = "form-control" id="phone" name="phone"><br>
 
     <label for="time">Time: </label>
-    <input id="time" type="time" name="appt-time"><br>
+    <input id="time" class= "form-control" type="time" name="appt-time"><br>
 
     <label for="name">Date:</label>
-    <input type="text" id="date" data-format="DD-MM-YYYY" data-template="D MMM YYYY" name="date" value="09-01-2013"><br>
+    <input type="text" id="date" data-format="DD-MM-YYYY" data-template="D MMM YYYY" class = "form-control" name="date" value="09-01-2013"><br>
+    <div class="form-group">
+        <label for="req">Requests: </label>
+        <textarea type="text" class="form-control" id="req" name="req" rows="3"></textarea>
+      </div>
 
     <input type="submit" value="Submit">
   </form>
-    <form action="thankyou.html">
-      <input type="submit" value="Confirmation" />
-  </form>
-  </form>
+</div>
 
   <script>
+    let new_name =localStorage.getItem("restaurant")
+    document.getElementById("formTitle").innerHTML = (new_name)
     // Gets input values from reservation form and stores into Firebase database.
     // creates a new document in Reservations collection with reservation name and contents of number of guests,
     // time and date.
@@ -115,14 +96,12 @@
       let time = document.getElementById('time').value
       let phone = document.getElementById('phone').value
       let req = document.getElementById('req').value
-
       localStorage.setItem("name", name);
       localStorage.setItem("guests", guests);
       localStorage.setItem("date", date);
       localStorage.setItem("time", time);
       localStorage.setItem("phone", phone);
       localStorage.setItem("req", req);
-
       db.collection("Restaurants").doc("CactusBurnarby").collection("Reservations").doc(name).set({
         Name: name,
         Guests: guests,
@@ -130,9 +109,28 @@
         Date: date,
         Requests: req,
         Phone: phone
+
       })
+      document.location.href = "thankyou.html"
     }
   </script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+              apiKey: "AIzaSyAB-vxtLDcfQKj1Noull03LSW0UqDG5cfw",
+              authDomain: "learning-firestore-bab37.firebaseapp.com",
+              databaseURL: "https://learning-firestore-bab37.firebaseio.com",
+              projectId: "learning-firestore-bab37",
+              storageBucket: "learning-firestore-bab37.appspot.com",
+              messagingSenderId: "10298250754",
+              appId: "1:10298250754:web:2b3e2235e38845e4b3391b",
+              measurementId: "G-K40KBCH65H"
+            };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore()
+        </script>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -145,6 +143,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+   
+    <script src="scripts/reservation.js"></script>
+
 </body>
 
 </html>
+
