@@ -25,13 +25,14 @@
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
-            apiKey: "AIzaSyCENQ_98AjAccmfXsB2Kzfy-D_V3QvkN-M",
-            authDomain: "project-authentication-f841b.firebaseapp.com",
-            databaseURL: "https://project-authentication-f841b.firebaseio.com",
-            projectId: "project-authentication-f841b",
-            storageBucket: "project-authentication-f841b.appspot.com",
-            messagingSenderId: "541548160482",
-            appId: "1:541548160482:web:91a33581cbdf8b6048c5bb"
+            apiKey: "AIzaSyAB-vxtLDcfQKj1Noull03LSW0UqDG5cfw",
+    authDomain: "learning-firestore-bab37.firebaseapp.com",
+    databaseURL: "https://learning-firestore-bab37.firebaseio.com",
+    projectId: "learning-firestore-bab37",
+    storageBucket: "learning-firestore-bab37.appspot.com",
+    messagingSenderId: "10298250754",
+    appId: "1:10298250754:web:878be71cc5f32e20b3391b",
+    measurementId: "G-BWW4YKDLF6"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
@@ -47,6 +48,7 @@
         var db = firebase.firestore();
 
     </script>
+
     <script>
         var uiConfig = {
             callbacks: {
@@ -56,11 +58,12 @@
                     // or whether we leave that to developer to handle.
                     var user = authResult.user;
                     if (authResult.additionalUserInfo.isNewUser) {
-                        db.collection('user').doc(user.uid).set({
+                        db.collection('users').doc(user.uid).set({
                             name: user.displayName,
                             email: user.email
                         })
                             .then(function () {
+                               
                                 console.log('new user added to firestore');
                                 window.location.assign('signedin.html') 
 
@@ -82,7 +85,7 @@
             },
             // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
             signInFlow: 'popup',
-            signInSuccessUrl: 'signedin.html',
+            signInSuccessUrl: 'index.html',
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.EmailAuthProvider.PROVIDER_ID,

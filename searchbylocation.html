@@ -6,13 +6,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Search</title>
+        <title>Search by location</title>
+
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+        <script src="scripts/firebase_setup.js"></script>
+
+
             <!-- Making sure it's mobile friendly -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
 
         <style>
             
@@ -71,10 +78,45 @@
               Choose your location
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="vancouver.html">Vancouver</a>
+              <ul id = "cafe-list"></ul>
+              <!-- <a class="dropdown-item" href="vancouver.html">Vancouver</a>
               <a class="dropdown-item" href="burnaby.html">Burnaby</a>
-              <a class="dropdown-item" href="richmond.html">Richmond</a>
+              <a class="dropdown-item" href="richmond.html">Richmond</a> -->
             </div>
         </div>
+        
+        <body>
+            <h1>Cloud Cafe</h1>
+            <div class="content">
+             
+              <ul id="cafe-list"></ul>
+            
+            </div>
 
+            <ul>
+
+            </ul>
+
+<div>
+  <table id = "restaurant-list" style = "display: block">  
+              </table>
+            </div>
+<script>
+    // Your web app's Firebase configuration
+              var firebaseConfig = {
+                apiKey: "AIzaSyAB-vxtLDcfQKj1Noull03LSW0UqDG5cfw",
+                authDomain: "learning-firestore-bab37.firebaseapp.com",
+                databaseURL: "https://learning-firestore-bab37.firebaseio.com",
+                projectId: "learning-firestore-bab37",
+                storageBucket: "learning-firestore-bab37.appspot.com",
+                messagingSenderId: "10298250754",
+                appId: "1:10298250754:web:2b3e2235e38845e4b3391b",
+                measurementId: "G-K40KBCH65H"
+              };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          const db = firebase.firestore()
+      
+  </script>
+    <script src="scripts/location_lookup.js"></script>
     </body>
