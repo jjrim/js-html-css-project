@@ -1,8 +1,7 @@
 const cafelist = document.querySelector('#cafe-list'); // How you target the HTML element with this ID
 const form = document.querySelector("#add-cafe-form"); // How you target the form with this id
 let restaurant_list= document.getElementById("restaurant-list")
-const user=localStorage.getItem("user")
-console.log(db.collection('users').doc(user))
+
 // create element and render cafe
 function renderCafe(doc){
   let li = document.createElement("li"); 
@@ -27,7 +26,6 @@ function restaurantTableMaker(city){
 
 
 function renderRestaurant(doc){
-  console.log(user)
      let li = document.createElement("tr");
         let restaurant = document.createElement('td');
         let link = document.createElement('a');
