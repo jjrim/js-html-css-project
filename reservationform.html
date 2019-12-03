@@ -6,10 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Reservation Form</title>
 
-  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
-  <script src="scripts/firebase_setup.js"></script>
-
   <!-- Making sure it's mobile friendly -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,30 +17,37 @@
 
 
   <div style="background:rgb(112, 10, 10)">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="signedin.html">Homepage</a>
-      </li>
-      <li class="nav-item dropdown pill-color">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find your restaurant</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="searchbylocation.html">By location</a>
-          <a class="dropdown-item" href="searchbyname.html">By name</a>
-          <a class="dropdown-item" href="searchallrestaurants.html">See all restaurants</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="reservation.html">Reserve a table</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link pill-color" href="syncyourtable.html">Sync your table</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="login.html">Sign out</a>
-      </li>
-    </ul>
+      <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Homepage</a>
+              </li>
+              <li class="nav-item dropdown pill-color logged-in" style = "display:none;">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find your restaurant</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="searchbylocation.html">By location</a>
+                  <a class="dropdown-item" href="searchbyname.html">By name</a>
+                  <a class="dropdown-item" href="searchallrestaurants.html">See all restaurants</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="reservation.html">Reserve a table</a>
+                </div>
+              </li>
+              <li class="nav-item logged-in" style = display:none>
+                <a class="nav-link pill-color" href="syncyourtable.html">Sync your table</a>
+              </li>
 
-  </div>
+                    <li class="nav-item logged-in" style="display: none;">
+                      <a href="table_details.html" class="grey-text modal-trigger nav-link pill-color">Account</a>
+                    </li>
+                    <li class="nav-item logged-in" style="display: none;">
+                      <a href="#" class="grey-text nav-link pill-color" id="logout">Logout</a>
+                    </li>
+                    <li class="nav-item logged-out" style="display: none;">
+                      <a href="login.html" class="grey-text modal-trigger nav-item nav-link active">Sign in</a>
+                    </li>
+                  
+            </ul>
 
+          </div>
 </head>
 
 <body>
@@ -55,7 +58,7 @@
   <h1 id="formTitle"></h1>
 <!-- <div class = "outer"> -->
 <div class = "formdiv">
-  <form action="thankyou.html" id="ReservationForm">
+  <form id="ReservationForm"action="thankyou.html">
     <label for="name">Name:</label>
     <input type="text" id="name"  class = "form-control" name="name"><br>
 
@@ -80,8 +83,14 @@
 </div>
 
   <script>
+
+
+
+
     let new_name =localStorage.getItem("restaurant")
     document.getElementById("formTitle").innerHTML = (new_name)
+    
+    
     // Gets input values from reservation form and stores into Firebase database.
     // creates a new document in Reservations collection with reservation name and contents of number of guests,
     // time and date.
@@ -94,56 +103,68 @@
       let time = document.getElementById('time').value
       let phone = document.getElementById('phone').value
       let req = document.getElementById('req').value
+      let user =localStorage.getItem("user")
+      console.log(user)
       localStorage.setItem("name", name);
       localStorage.setItem("guests", guests);
       localStorage.setItem("date", date);
       localStorage.setItem("time", time);
       localStorage.setItem("phone", phone);
       localStorage.setItem("req", req);
-      db.collection("Restaurants").doc("CactusBurnarby").collection("Reservations").doc(name).set({
-        Name: name,
-        Guests: guests,
-        Time: time,
-        Date: date,
-        Requests: req,
-        Phone: phone
-
+      db.collection("users").doc(user).collection("reservations").add({
+        Name: document.getElementById('name').value,
+        Guests: parseInt(document.getElementById('guests').value),
+        Time: document.getElementById('time').value,
+        Date: document.getElementById('date').value,
+        Requests: document.getElementById('req').value,
+        Phone: document.getElementById('phone').value
       })
-      document.location.href = "thankyou.html"
+      // .then(document.location.href = "thankyou.html")
     }
+    document.getElementById('ReservationForm').addEventListener('submit', changePage)
+  function changePage(){
+    document.location.href="thankyou.html"
+  }
+
   </script>
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-              apiKey: "AIzaSyAB-vxtLDcfQKj1Noull03LSW0UqDG5cfw",
-              authDomain: "learning-firestore-bab37.firebaseapp.com",
-              databaseURL: "https://learning-firestore-bab37.firebaseio.com",
-              projectId: "learning-firestore-bab37",
-              storageBucket: "learning-firestore-bab37.appspot.com",
-              messagingSenderId: "10298250754",
-              appId: "1:10298250754:web:2b3e2235e38845e4b3391b",
-              measurementId: "G-K40KBCH65H"
-            };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore()
-        </script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAB-vxtLDcfQKj1Noull03LSW0UqDG5cfw",
+    authDomain: "learning-firestore-bab37.firebaseapp.com",
+    databaseURL: "https://learning-firestore-bab37.firebaseio.com",
+    projectId: "learning-firestore-bab37",
+    };
+    firebase.initializeApp(config);
+    
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  
+    // update firestore settings
+  </script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
 
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    
     <script src="scripts/reservation.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
+
+
+
 
 </body>
 
