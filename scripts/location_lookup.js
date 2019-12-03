@@ -4,15 +4,14 @@ let restaurant_list= document.getElementById("restaurant-list")
 
 // create element and render cafe
 function renderCafe(doc){
-  let li = document.createElement("li"); 
-  let city = document.createElement('div');
+  let li = document.createElement("p");
+    let city = document.createElement('div');
+    li.setAttribute('data-id', doc.id)
+    city.innerHTML = doc.data().city;
+    city.onclick = function(){restaurantTableMaker(doc.id)};
+    li.appendChild(city); // make the list using text made from the firebase data.
 
-  li.setAttribute('data-id', doc.id)
-  city.innerHTML = doc.data().city;
-  city.onclick = function(){restaurantTableMaker(doc.id)};
-      li.appendChild(city); // make the list using text made from the firebase data.
-
-      cafelist.appendChild(li); // add the list to the HTML element
+    cafelist.appendChild(li); // add the list to the HTML element
       }
 
 function restaurantTableMaker(city){
@@ -27,22 +26,22 @@ function restaurantTableMaker(city){
 
 function renderRestaurant(doc){
      let li = document.createElement("tr");
+     li.style.height = "50px";
         let restaurant = document.createElement('td');
         let link = document.createElement('a');
 
         li.setAttribute('data-id', doc.id);
         restaurant.innerHTML = doc.data().restaurant;
         link.href = "reservationform.html";
-        link.innerHTML = "reserve now"
-        
+        link.innerHTML = "reserve now";
 
       li.appendChild(restaurant);
       let cell2=li.insertCell(1); 
-      cell2.innerHTML = "reserve";// make the list using text made from the firebase data.
+      cell2.innerHTML = "Reserve";// make the list using text made from the firebase data.
+      cell2.style.textDecoration = "underline";
       restaurant_list.appendChild(li);
       cell2.onclick= function(){restaurantChooser(doc.data().restaurant)};    
-    
-              } 
+    }
       
 
 function restaurantChooser(name){
