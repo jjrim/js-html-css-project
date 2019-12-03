@@ -42,17 +42,10 @@
 </head>
 <body>
 
-<div class="outer">
-  <div class="mainheader">
-        <h1>Table Details</h1>
-        <h1 id="username"></h1>
-  </div>
-  <div id="center">
-        <table class = "center">
-          <th>Customer</th><th>Order</th><th>Bill</th>
-          <tr><td>James</td> <td> <a href="orderdetails.html">Order Details</a></td><td>$13.50</td></tr>
-        </table>
-  </div></div>
+
+        <h1>Your Table Number</h1>
+        <h2 id="tableNum"></h2>
+
   <div class="outer">
   <a href= "notify.html"><div class="timebox2 center">
     <p class = "timeboxWriting">Notify your server</p></a>
@@ -68,8 +61,11 @@
 
   </div>
 <script>
-name= localStorage.getItem('userName')
-document.getElementById("username").innerHTML = name
+let tableNum = localStorage.getItem('tableNum')
+window.onload=function(e){
+  e.preventDefault()
+  document.getElementById('tableNum').innerHTML = tableNum
+}
 </script>
 
 
