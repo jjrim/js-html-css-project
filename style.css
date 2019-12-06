@@ -8,17 +8,6 @@ h2 {
     color: white;
 }
 
-
-/* #reciept{
-background-color: rgb(241, 225, 225);
-margin: 0 auto;
-text-align: left;
-border-color: red;
-border-collapse:collapse */
-
-
-/* } */
-
 #para1,
 #para2,
 #para3,
@@ -250,7 +239,7 @@ tr td:hover {
 
 .mainheader {
     margin-bottom: 50px;
-    align: center;
+    text-align: center;
 }
 
 .center {
@@ -259,7 +248,6 @@ tr td:hover {
 }
 
 #ReservationForm {
-    left: 40%;
-    top: 60%;
     position: relative;
+    text-align: center;
 }
