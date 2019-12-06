@@ -36,7 +36,6 @@
 
 <body>
 
-
     <h1>Your Table Number</h1>
     <h2 id="tableNum"></h2>
 
@@ -59,14 +58,8 @@
         </a>
 
     </div>
-    <script>
-        let tableNum = localStorage.getItem('tableNum')
-        window.onload = function(e) {
-            e.preventDefault()
-            document.getElementById('tableNum').innerHTML = tableNum
-        }
-    </script>
-
+    
+    <script src="tabledetails.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

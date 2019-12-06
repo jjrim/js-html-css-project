@@ -38,8 +38,6 @@
         <h1>Search Restaurant by Location</h1>
     </div>
 
-
-
     <div id='Board'>
         <table id='board'>
             <tr>
@@ -47,8 +45,6 @@
                 <th>Location</th>
             </tr>
         </table>
-
-
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -78,23 +74,6 @@
         </script>
         <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        <script>
-            function filterByLocation() {
-                document.getElementById('board').innerHTML = '<tr><th>Name</th><th>Area</th></tr>';
-                db.collection("Restaurants").orderBy("Area", "desc").get().then((snapshot) => {
-                    snapshot.forEach((doc) => {
-                        let RestName = doc.data().Name;
-                        let url = "reservationform.html?" + RestName;
-                        document.getElementById('board').innerHTML += '<tr>' +
-                            '<td id=' + RestName + '>' + `<a href=${url}>` + doc.data().Name + '</button>' + '</td>' +
-                            '<td>' + doc.data().Area + '</td>' +
-                            '</tr>';
-
-                    })
-                })
-            }
-            filterByLocation();
-        </script>
+        <script src="location.js"></script>
 </body>
-
 </html>
