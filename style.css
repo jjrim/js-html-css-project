@@ -251,3 +251,20 @@ tr td:hover {
     position: relative;
     text-align: center;
 }
+
+.reciept {
+    width: 40%;
+}
+
+#board {
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* #reciept{
+background-color: rgb(241, 225, 225);
+margin: 0 auto;
+text-align: left;
+border-color: red;
+border-collapse:collapse */
+/* } */
