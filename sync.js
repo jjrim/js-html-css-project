@@ -1,9 +1,17 @@
-var tableNum = document.getElementById('tableNum').value;
-localStorage.setItem("tableNum", tableNum);
-document.getElementById('tableinfo').addEventListener('submit', processForm);
-function processForm(e) {
-    e.preventDefault();
-    var tableNum = document.getElementById('tableNum').value;
-    localStorage.setItem("tableNum", tableNum);
-    window.open('tabledetails.html')
-}
+// document.getElementById("restaurantbutton").onclick= function(){setTable()};
+// function setTable(){
+// num = document.getElementById("restaurantsync").value
+// localStorage.setItem("tableNum", num)
+// document.location.href="tabledetails.html";
+// }
+
+
+// Get imput value and store it in local storage.
+  document.getElementById("restaurantbutton").onclick= function(){setTable()};
+  function setTable(){
+  num = document.getElementById("restaurantsync").value
+localStorage.setItem("tableNum", num)
+document.location.href="tabledetails.html";
+  }
+
+  

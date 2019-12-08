@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main Page</title>
+    <title>Table details</title>
 
     <!-- Making sure it's mobile friendly -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,10 +11,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+
     <link rel="stylesheet" type="text/css" href="style.css">
 
-
-    <!-- Navigation Bar -->
+    <!-- Navigation bar -->
     <div style="background:rgb(112, 10, 10)">
       <ul class="nav nav-tabs">
               <li class="nav-item">
@@ -36,7 +36,7 @@
                       <a href="table_details.html" class="grey-text modal-trigger nav-link pill-color">Account</a>
                     </li>
                     <li class="nav-item logged-in" style="display: none;">
-                      <a href="index" class="grey-text nav-link pill-color" id="logout">Logout</a>
+                      <a href="#" class="grey-text nav-link pill-color" id="logout">Logout</a>
                     </li>
                     <li class="nav-item logged-out" style="display: none;">
                       <a href="login.html" class="grey-text modal-trigger nav-item nav-link active">Sign in</a>
@@ -46,52 +46,58 @@
 
           </div>
 
-
 </head>
+
+
 <body>
 
-  <!-- Title -->
 <div class="outer">
-        <h1>Welcome</h1>
-    <h2>to the</h2>
-    <h1>J Bros Restaurant App</h1>
-    <h1 id="username" class="logged-in" style="display: none"></h1>
-</div>
-<div class="outer">
-  <div class="sphere">
-      <br>
-      <p>J Bros</p>
+  <div class="mainheader">
+        <h1 id="username"></h1>
   </div>
-</div>
 
-<!-- Provide a button for finding a restaurant that is easy for mobile users to click.-->
-<div class="outer">
-    <a href="name.html">
-        <div class="signinbutton logged-in">
-          <br>
-            <p class="signin">Find a Restaurant</p>
-        </div>
-    </a>
-</div>
+    <!-- This button takes you to see what reservations are stored on the database
+    in your unique user profile. -->
+      </div></div>
+      <div class="outer">
+      <a href= "yourreservation.html"><div class="timebox2 center">
+        <br>
+        <p class = "timeboxWriting">See your reservation</p></a>
+    
+      </div></div>
 
-<!-- Sign in button conveniently placed for users.  Disappears when user signs in.
-Decided not to implement a logout button as the nav bar is good enough for logging out. -->
-<div class="outer">
-    <a href="login.html">
-        <div class="signinbutton logged-out">
-          <br>
-            <p class="signin">Sign in</p>
-        </div>
-    </a>
-</div>
-        
 
-<!-- Firebase Script.  All of this must be on the HTML page to work properly -->
-<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+      <!-- This button takes you to a server notification page, which one one of our features
+      we didn't get to finish. -->
+  </div></div>
+  <div class="outer">
+  <a href= "notify.html"><div class="timebox2 center">
+    <br>
+    <p class = "timeboxWriting">Notify your server</p></a>
+
+  </div></div>
+
+
+  <!-- Main page button -->
+  <div class="outer">
+      <a href="index.html">
+          <div class=signinbutton>
+            <br>
+              <p class="signin">Back to Main Page</p>
+          </div>
+      </a>
+
+  </div>
+
+    
+<!-- Script necessary for using firebase -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
   <script>
-    // Initialize Firebase
+
+
+    // Initialize  personal Firebase
     var config = {
       apiKey: "AIzaSyCENQ_98AjAccmfXsB2Kzfy-D_V3QvkN-M",
             authDomain: "project-authentication-f841b.firebaseapp.com",
@@ -103,24 +109,16 @@ Decided not to implement a logout button as the nav bar is good enough for loggi
     };
     firebase.initializeApp(config);
     
+
+    
     // make auth and firestore references
     const auth = firebase.auth();
     const db = firebase.firestore();
-    // update firestore settings
   </script>
-
-<!-- Script for displaying the username.  It is placed here
-rather than in a separate JS file because several other pages use the index.js for their
-scripts, and these two lines of code are too small to warrant their own external file. -->
-<script>
-var name = localStorage.getItem('username')
-document.getElementById('username').innerHTML = name
-</script>
-
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
-  <!-- Main Javascript for the Index page -->
+  <!-- Login script -->
   <script src="scripts/auth.js"></script>
   <script src="scripts/index.js"></script>
 
@@ -130,6 +128,9 @@ document.getElementById('username').innerHTML = name
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-   
+    <script>
+        var name = localStorage.getItem('username')
+        document.getElementById('username').innerHTML = name
+        </script>
 </body>
 </html>

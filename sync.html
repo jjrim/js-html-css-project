@@ -55,7 +55,19 @@
             </a>
         </div>
 
-        <script src="sync.js"></script>
+        <script>
+            var tableNum = document.getElementById('tableNum').value;
+            localStorage.setItem("tableNum", tableNum);
+
+            document.getElementById('tableinfo').addEventListener('submit', processForm);
+
+            function processForm(e) {
+                e.preventDefault();
+                var tableNum = document.getElementById('tableNum').value;
+                localStorage.setItem("tableNum", tableNum);
+                window.open('tabledetails.html')
+            }
+        </script>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

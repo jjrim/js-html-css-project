@@ -1,4 +1,10 @@
-{/* <html>
+
+// This is backup script for copying into our documents when setting up firebase.
+
+// We didn't want to delete it in case one of our files is referencing it by
+//  mistake and we caused a reference error.  But this file should not be doing anything.
+
+/* <html>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
 https://firebase.google.com/docs/web/setup#available-libraries -->

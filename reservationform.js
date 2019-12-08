@@ -5,9 +5,13 @@ document.getElementById("restname").innerHTML = restName
     // Gets input values from reservation form and stores into Firebase database.
     // creates a new document in Reservations collection with reservation name and contents of number of guests,
     // time and date.
+
+// Attach a function to the submit button that collects form data.
 document.getElementById('ReservationForm').addEventListener('submit', processReservation)
 var email = localStorage.getItem("email", email);
 
+
+// Get information from form
 function processReservation(e) {
     e.preventDefault();
     let resname = document.getElementById('name').value
@@ -17,6 +21,8 @@ function processReservation(e) {
     let phone = document.getElementById('phone').value
     let req = document.getElementById('req').value
 
+
+    //Put information into local storage.
     localStorage.setItem("name", resname);
     localStorage.setItem("guests", guests);
     localStorage.setItem("date", date);
@@ -25,6 +31,8 @@ function processReservation(e) {
     localStorage.setItem("req", req);
     localStorage.setItem('email', email)
 
+
+    // Store information in database
     db.collection('user').doc(email).set({
         name: name,
         email: email,
@@ -38,5 +46,7 @@ function processReservation(e) {
             Phone: phone,
         }
     })
-    window.open('myreservation.html')
+
+    // Automatically redirect to a confirmation page
+    document.location.href='myreservation.html'
 }

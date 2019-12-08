@@ -1,17 +1,21 @@
+// I beleive we stopped using this file in favour of location.js, but I didn't delete this in case
+//another page is referencing it.  However, nothing in this file should be being used.
+
 const cafelist = document.querySelector('#cafe-list'); // How you target the HTML element with this ID
 const form = document.querySelector("#add-cafe-form"); // How you target the form with this id
 let restaurant_list= document.getElementById("restaurant-list")
 
 // create element and render cafe
 function renderCafe(doc){
-  let li = document.createElement("p");
-    let city = document.createElement('div');
-    li.setAttribute('data-id', doc.id)
-    city.innerHTML = doc.data().city;
-    city.onclick = function(){restaurantTableMaker(doc.id)};
-    li.appendChild(city); // make the list using text made from the firebase data.
+  let li = document.createElement("li"); 
+  let city = document.createElement('div');
 
-    cafelist.appendChild(li); // add the list to the HTML element
+  li.setAttribute('data-id', doc.id)
+  city.innerHTML = doc.data().city;
+  city.onclick = function(){restaurantTableMaker(doc.id)};
+      li.appendChild(city); // make the list using text made from the firebase data.
+
+      cafelist.appendChild(li); // add the list to the HTML element
       }
 
 function restaurantTableMaker(city){
@@ -26,28 +30,27 @@ function restaurantTableMaker(city){
 
 function renderRestaurant(doc){
      let li = document.createElement("tr");
-     li.style.height = "50px";
         let restaurant = document.createElement('td');
         let link = document.createElement('a');
 
         li.setAttribute('data-id', doc.id);
         restaurant.innerHTML = doc.data().restaurant;
         link.href = "reservationform.html";
-        link.innerHTML = "reserve now";
+  
+        
 
       li.appendChild(restaurant);
       let cell2=li.insertCell(1); 
-      cell2.innerHTML = "Reserve";// make the list using text made from the firebase data.
-      cell2.style.textDecoration = "underline";
+      cell2.innerHTML = "reserve";// make the list using text made from the firebase data.
+      cell2.className = "clickable"
       restaurant_list.appendChild(li);
       cell2.onclick= function(){restaurantChooser(doc.data().restaurant)};    
-    }
+              } 
       
 
 function restaurantChooser(name){
-  document.location.href="reservationform.html"
-localStorage.setItem("restaurant_title", name)
-}
+  document.location.href="reservationform.html";
+  localStorage.setItem("restaurant", name);}
 // deleting data.
 
 
