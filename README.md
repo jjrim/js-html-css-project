@@ -1,4 +1,4 @@
-# comp1930group13
+# My first HTML/JS/CSS project
 This is a restuarant reservation web application that is made from BCIT CST COMP1930.
 The user must sign in first to use the app.
 When the user is signed in, user data is stored in the database automatically.
